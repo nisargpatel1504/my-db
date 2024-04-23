@@ -36,19 +36,22 @@ go run main.go
 ##Creating a Table
 
 - To create a table, define the table structure with columns and types, and call the CreateTable method:
-- db.CreateTable("users", []model.Column{
+```bash
+db.CreateTable("users", []model.Column{
     {Name: "id", Type: "int"},
     {Name: "name", Type: "string"},
 })
+```
 
 ##Inserting Data
 Insert data into the table by specifying the table name and data in key-value pairs:
-
+```bash
 db.Insert("users", model.Row{"id": 1, "name": "Alice"})
-
+```
 ##Selecting Data
 - Retrieve data from a table, optionally using conditions for filtering:
 
+```bash
 query := model.JoinQuery{
     Table1:   "users",
     Table2:   "orders",
@@ -58,14 +61,17 @@ query := model.JoinQuery{
     WhereVal: 1,
 }
 db.JoinTables(query)
+```
 
 ##Updating Data
 Update data in a table by specifying the table name, row index, and new data:
 
+```bash
 db.Update("users", 0, model.Row{"name": "Updated Alice"})
+```
 
 ###Deleting Data
 Delete data by specifying the table name and row index:
-
+```bash
 db.Delete("users", 0)
-
+```
